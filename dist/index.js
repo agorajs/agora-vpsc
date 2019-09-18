@@ -13,6 +13,8 @@
  * Online ISBN 978-3-540-31667-1,
  * https://doi.org/10.1007/11618058_15.
  * (https://link.springer.com/chapter/10.1007%2F11618058_15)
+ *
+ * courtesy to the webcola framework
  */
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -21,8 +23,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var agora_graph_1 = require("agora-graph");
 var webcola_1 = require("webcola");
 var lodash_1 = __importDefault(require("lodash"));
-exports.default = vpsc;
-function vpsc(graph, options) {
+exports.vpsc = agora_graph_1.createFunction(function (graph, options) {
     if (options === void 0) { options = { padding: 0 }; }
     var rects = lodash_1.default.map(graph.nodes, function (node) { return new webcola_1.Rectangle(agora_graph_1.left(node), agora_graph_1.right(node), agora_graph_1.top(node), agora_graph_1.bottom(node)); });
     webcola_1.removeOverlaps(rects);
@@ -31,5 +32,9 @@ function vpsc(graph, options) {
         node.y = rects[node.index].cy();
     });
     return { graph: graph };
-}
-exports.vpsc = vpsc;
+});
+exports.VPSCAlgorithm = {
+    name: 'VPSC',
+    algorithm: exports.vpsc
+};
+exports.default = exports.VPSCAlgorithm;
