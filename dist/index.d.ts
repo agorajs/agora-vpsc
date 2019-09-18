@@ -12,10 +12,14 @@
  * Online ISBN 978-3-540-31667-1,
  * https://doi.org/10.1007/11618058_15.
  * (https://link.springer.com/chapter/10.1007%2F11618058_15)
+ *
+ * courtesy to the webcola framework
  */
-import { Graph } from 'agora-graph';
-import { Result } from 'agora-algorithm';
-export default vpsc;
-export declare function vpsc(graph: Graph, options?: {
+import { Algorithm } from 'agora-graph';
+export declare const vpsc: import("agora-graph").Function<{
     padding: number;
-}): Result;
+}>;
+export declare const VPSCAlgorithm: Algorithm<{
+    padding: number;
+}>;
+export default VPSCAlgorithm;

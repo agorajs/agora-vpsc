@@ -1,6 +1,6 @@
 {
   "name": "agora-vpsc",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "dist/index.js",
   "author": "Fati CHEN <fati.chen@lirmm.fr>",
   "license": "MIT",
@@ -11,7 +11,9 @@
     "@types/lodash": "^4.14.138",
     "agora-graph": "https://github.com/agorajs/agora-graph.git#semver:^1.1.1",
     "lodash": "^4.17.15",
-    "typescript": "^3.6.3",
     "webcola": "^3.4.0"
+  },
+  "devDependencies": {
+    "typescript": "^3.6.3"
   }
 }
