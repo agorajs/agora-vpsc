@@ -16,29 +16,23 @@
  * courtesy to the webcola framework
  */
 
-import {
-  left,
-  right,
-  bottom,
-  top,
-  createFunction,
-  Algorithm
-} from 'agora-graph';
+import type { Algorithm } from 'agora-graph';
+import { left, right, bottom, top, createFunction } from 'agora-graph';
 import { removeOverlaps, Rectangle } from 'webcola';
 import _ from 'lodash';
 
-export const vpsc = createFunction<{ padding: number }>(function(
+export const vpsc = createFunction<{ padding: number }>(function (
   graph,
   options = { padding: 0 }
 ) {
   const rects: Rectangle[] = _.map(
     graph.nodes,
-    node => new Rectangle(left(node), right(node), top(node), bottom(node))
+    (node) => new Rectangle(left(node), right(node), top(node), bottom(node))
   );
 
   removeOverlaps(rects);
 
-  _.forEach(graph.nodes, node => {
+  _.forEach(graph.nodes, (node) => {
     node.x = rects[node.index].cx();
     node.y = rects[node.index].cy();
   });
@@ -48,6 +42,6 @@ export const vpsc = createFunction<{ padding: number }>(function(
 
 export const VPSCAlgorithm: Algorithm<{ padding: number }> = {
   name: 'VPSC',
-  algorithm: vpsc
+  algorithm: vpsc,
 };
 export default VPSCAlgorithm;
